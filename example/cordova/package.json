@@ -12,12 +12,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@aerogearservices/core-cordova": "file:../../packages/core-cordova",
     "@aerogearservices/core": "file:../../packages/core",
+    "@aerogearservices/core-cordova": "file:../../packages/core-cordova",
+    "auth": "/home/scoady/work/aerogear-js-sdk/packages/auth",
     "browserify": "^16.1.0",
     "cordova": "^8.0.0",
     "cordova-android": "^7.1.0",
     "cordova-browser": "^5.0.3",
+    "cordova-plugin-browsersync": "^1.1.0",
     "cordova-plugin-whitelist": "^1.3.3",
     "core-cordova": "/home/scoady/work/aerogear-js-sdk/packages/core-cordova",
     "cpy-cli": "^1.0.1",
@@ -28,7 +30,8 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "core-cordova": {}
+      "core-cordova": {},
+      "cordova-plugin-browsersync": {}
     },
     "platforms": [
       "browser",

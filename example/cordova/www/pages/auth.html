@@ -18,12 +18,11 @@
    
        <div class="page-content">
          <div>
-           <h4>Auth:</h4>
-           <p id="metrics-info">No auth</p>
+
          </div>
    
          <div class="block block-strong">
-           <a href="#" class="button button-raised" @click="sendMetrics">Login</a>
+           <a href="#" class="button button-raised" @click="sendMetrics">Authenticate</a>
          </div>
    
          <div>
@@ -44,22 +43,13 @@
    <script>
      return {
        beforeCreate() {
-         var self = this;
-         self.$("#auth-info").html("No auth");
-         window.MobileCore.MetricsService.getMetrics(
-           function (metrics) {
-             self.$("#auth-info").html(JSON.stringify(metrics));
-           },
-           function (error) { self.$("#auth-info").html(error); }
-         );
+
        },
        data: function () {
          return {}
        },
        methods: {
-         sendMetrics: function (success, error) {
-           // TODO: import library and call sendAppAndDeviceMetrics
-         },
+
        }
      };
    </script>

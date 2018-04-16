@@ -51,15 +51,6 @@ function onDeviceReady() {
               itemText: "Send push notifications to any device, regardless of platform or network",
               websiteName: "Aerogear Push",
               websiteUrl: "https://aerogear.org/push/"
-            },
-            auth: {
-              title: "Authentication",
-              blockTitle: "Authentication via Shitercloak",
-              imageName: "keycloak_logo.png",
-              itemTitle: "Keycloak configuration:",
-              itemText: "TODO",
-              websiteName: "Keycloak",
-              websiteUrl: "https://www.keycloak.org/"
             }
           };
 
