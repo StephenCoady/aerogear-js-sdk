@@ -50,7 +50,8 @@ export class OfflineRestoreHandler {
       this.apolloClient.mutate({
         variables: item.operation.variables,
         mutation: item.operation.query,
-        optimisticResponse: item.optimisticResponse
+        optimisticResponse: item.optimisticResponse,
+        context: { queuedOffline: true }
       });
     });
 
