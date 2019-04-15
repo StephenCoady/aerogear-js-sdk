@@ -4,7 +4,6 @@ import { ApolloClient } from "apollo-client";
 import { DataSyncConfig } from "./config";
 import { SyncConfig } from "./config/SyncConfig";
 import { createDefaultLink, createOfflineLink } from "./links/LinksBuilder";
-import { PersistedData, PersistentStore } from "./PersistentStore";
 import { OfflineMutationsHandler } from "./offline/OfflineMutationsHandler";
 import { OfflineLink } from "./offline/OfflineLink";
 
@@ -63,11 +62,13 @@ function extractConfig(userConfig: DataSyncConfig | undefined) {
  */
 async function buildCachePersistence(clientConfig: DataSyncConfig) {
   const cache = new InMemoryCache();
-  await persistCache({
-    cache,
-    storage: clientConfig.storage as PersistentStore<PersistedData>,
-    maxSize: false,
-    debug: false
-  });
+  if (clientConfig.storage) {
+    await persistCache({
+      cache,
+      storage: clientConfig.storage,
+      maxSize: false,
+      debug: false
+    });
+  }
   return { cache };
 }
