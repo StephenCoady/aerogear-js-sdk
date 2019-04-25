@@ -33,7 +33,7 @@ export class OfflineStore {
    * Fetch data from the
    */
   public async getOfflineData(): Promise<OfflineItem[]> {
-    const stored = this.storage.getItem(this.storageKey);
+    const stored = await this.storage.getItem(this.storageKey);
     let offlineData;
     if (stored) {
       offlineData = JSON.parse(stored.toString());
