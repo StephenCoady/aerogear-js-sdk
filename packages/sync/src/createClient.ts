@@ -12,12 +12,17 @@ import { OfflineLink } from "./offline/OfflineLink";
  */
 export type VoyagerClient = ApolloClient<NormalizedCacheObject>;
 
+export interface Voyager {
+  client: VoyagerClient;
+  config: DataSyncConfig;
+}
+
 /**
  * Factory for creating Apollo Client
  *
  * @param userConfig options object used to build client
  */
-export const createClient = async (userConfig?: DataSyncConfig): Promise<VoyagerClient> => {
+export const createClient = async (userConfig?: DataSyncConfig): Promise<Voyager> => {
   const clientConfig = extractConfig(userConfig);
   const { cache } = await buildCachePersistence(clientConfig);
 
@@ -29,7 +34,11 @@ export const createClient = async (userConfig?: DataSyncConfig): Promise<Voyager
     cache
   });
   await restoreOfflineOperations(apolloClient, clientConfig, offlineLink);
-  return apolloClient;
+  const voyager: Voyager = {
+    client: apolloClient,
+    config: clientConfig
+   };
+  return voyager;
 };
 
 /**
