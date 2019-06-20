@@ -45,7 +45,7 @@ export class OfflineQueue {
    * Enqueue offline change and wait for it to be sent to server when online.
    * Every offline change is added to queue.
    */
-  public enqueueOfflineChange(operation: Operation, forward: NextLink) {
+  public enqueueOfflineChange(operation: Operation, forward: NextLink): Observable<FetchResult> {
     const offlineId = operation.getContext().offlineId;
     const operationEntry = new OperationQueueEntry(operation, offlineId, forward);
     this.queue.push(operationEntry);
